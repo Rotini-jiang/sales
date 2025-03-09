@@ -24,4 +24,10 @@ public class CustomerService {
     public List<Customer> getAll() {
         return (List<Customer>) customerRepository.findAll();
     }
+
+    public boolean deleteById(Long id) {
+        return false;
+    }
+
+
 }
