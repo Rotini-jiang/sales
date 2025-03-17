@@ -3,10 +3,11 @@ package com.rotini.sales.repository;
 import com.rotini.sales.domain.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Optional;
 
 @Repository
-@RequestMapping("/api/product")
-public interface ProductRepository extends CrudRepository<Product, Long> {
+public interface ProductRepository extends CrudRepository<Product, Integer> {
 
+    Optional<Product> findByCode(String code);
 }

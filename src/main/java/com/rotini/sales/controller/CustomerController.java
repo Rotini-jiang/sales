@@ -1,6 +1,8 @@
 package com.rotini.sales.controller;
 
 import com.rotini.sales.domain.Customer;
+import com.rotini.sales.domain.CustomerDepositDTO;
+import com.rotini.sales.domain.CustomerWithdrawDTO;
 import com.rotini.sales.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getById(@RequestParam Long id) {
+    public ResponseEntity<Customer> getById(@RequestParam Integer id) {
         return ResponseEntity.ok(customerService.getById(id));
     }
 
@@ -32,12 +34,23 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> update(@PathVariable Long id, @RequestBody Customer customer) {
+    public ResponseEntity<Customer> update(@PathVariable Integer id, @RequestBody Customer customer) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Customer> delete(@PathVariable Long id, @Valid @RequestBody Customer customer) {
+    public ResponseEntity<Customer> delete(@PathVariable Integer id, @Valid @RequestBody Customer customer) {
         return null;
     }
+
+    @PatchMapping("/{id}/deposit")
+    public ResponseEntity<Customer> deposit(@PathVariable Integer id, @Valid @RequestBody CustomerDepositDTO customerDepositDTO) {
+        return ResponseEntity.ok(customerService.deposit(id, customerDepositDTO));
+    }
+
+    @PatchMapping("/{id}/withdraw")
+    public ResponseEntity<Customer> withdraw(@PathVariable Integer id, @Valid @RequestBody CustomerWithdrawDTO customerWithdrawDTO) {
+        return ResponseEntity.ok(customerService.withdraw(id, customerWithdrawDTO));
+    }
+
 }

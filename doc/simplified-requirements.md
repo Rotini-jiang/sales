@@ -15,6 +15,8 @@ A learning project for Junior Full-Stack Developers using Spring Boot and Vue + 
    - Create new customer
    - View customer details
    - Update customer balance
+   - deposit customer balance, add balance. added balance must be positive
+   - with customer balance, decrease balance, remain balance can't be negative
 
 2. Product Management
    - View product list
